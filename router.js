@@ -1,9 +1,3 @@
-/*************************************************
-/ Create by Huy Nguyen<ngxhuy89@gmail.com>
-/ Simple lightway js JSCV[JavaScript - Controller - View]/
-/ July 2014 - of kkhk co.ltd project
-/ All Rights Reserved © Copyright huynguyen 2014
-/***************************************************/
 var controller = {};
 controller.submit = function (target) {
     if (target) {
