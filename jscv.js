@@ -60,9 +60,6 @@ function include(file){
        }
     });
 }
-
-
-
 /*          */
 $(function(){
     if(config.res.indexOf(".") > 0){
@@ -92,10 +89,10 @@ $(function(){
 
     }
     $.when(
-        include(config.res + "/js/ejs.js"),
-        include(config.res + "/js/view.js"),
+        include(config.res + "/ejs.js"),
+        include(config.res + "/view.js"),
         include(config.bs + "/controllers/index.js"),
-        include(config.res + "/js/router.js")
+        include(config.res + "/router.js")
     ).done(function(){
         $("body").append(_r(config.index,true));
         $(document).delegate("[data-view]","click",function(){
