@@ -94,7 +94,7 @@ $(function(){
         include(config.bs + "/controllers/index.js"),
         include(config.res + "/router.js")
     ).done(function(){
-        $("body").append(_r(config.index,true));
+        $("body").append(_r(config.index,false,false));
         $(document).delegate("[data-view]","click",function(){
              config.currentview = $(this).attr("data-view");
              var place = $(this).attr("data-place");
