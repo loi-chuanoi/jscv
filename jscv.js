@@ -4,6 +4,10 @@
 / July 2014 - of vmsoftware projects
 / All Rights Reserved © Copyright huynguyen 2014
 /***************************************************/
+// register global val
+var Action = {};
+window.Action = Action;
+// end action
 
 function _r(template_name,load_data,not_post_data,in_data){
    return render(template_name,load_data,not_post_data,in_data);
