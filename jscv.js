@@ -84,7 +84,7 @@ $(function(){
     }
     for(var local_lib in config.user_libs){
 
-              include(config.bs + "/libs/" + config.user_libs[local_lib] + ".js")
+              include(config.bs + "/" + config.pname + "/libs/" + config.user_libs[local_lib] + ".js")
 
     }
     for(var vendor_lib in config.vendor){
@@ -95,7 +95,7 @@ $(function(){
     $.when(
         include(config.res + "/ejs.js"),
         include(config.res + "/view.js"),
-        include(config.bs + "/controllers/index.js"),
+        include(config.bs + "/" + config.pname + "/controllers/index.js"),
         include(config.res + "/router.js")
     ).done(function(){
         $("body").prepend(_r(config.index,false,false));
