@@ -26,7 +26,7 @@ controller.request = function (api, data, not_post_data) {
         var a = v[1];
         if (eval("window." + m + " == undefined")) {
             $.when(
-                include("controllers/" + m + ".js")
+                include(config.bs + "/controllers/" + m + ".js")
             ).done(function () {
                     r = eval("m = new " + m + "();m." + a + "(" + JSON.stringify(data) + ");");
                 });
@@ -58,7 +58,7 @@ controller.request = function (api, data, not_post_data) {
         a = v[1];
         if (eval("window." + m + " == undefined")) {
             $.when(
-                include("controllers/" + m + ".js")
+                include(config.bs + "/controllers/" + m + ".js")
             ).done(function () {
                     r = eval("m = new " + m + "();m." + a + "(" + JSON.stringify(data) + ");");
                 });
@@ -72,7 +72,7 @@ controller.request = function (api, data, not_post_data) {
         a = v[1];
         if (eval("window." + m + " == undefined")) {
             $.when(
-                include("controllers/" + m + ".js")
+                include(config.bs + "/controllers/" + m + ".js")
             ).done(function () {
                     r = eval("m = new " + m + "();m." + a + "(" + JSON.stringify(data) + ");");
                 });

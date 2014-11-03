@@ -66,37 +66,21 @@ function include(file){
 }
 /*          */
 $(function(){
-    if(config.res.indexOf(".") > 0){
-        var strs = config.res.split("/");
-        strs  = strs[strs.length-1];
-        config.res = config.res.replace(strs,"");
-    }
-    if(config.bs.indexOf(".") > 0){
-        var strs = config.bs.split("/");
-        strs  = strs[strs.length-1];
-        config.bs = config.bs.replace(strs,"");
-    }
-    if(config.res.substr(config.res.length-1,1)== "/"){
-        config.res = config.res.substr(0,config.res.length-1);    
-    }
     if(config.bs.substr(config.bs.length-1,1)== "/"){
         config.bs = config.bs.substr(0,config.bs.length-1);
     }
-    for(var local_lib in config.user_libs){
-
-              include(config.bs + "/" + config.pname + "/libs/" + config.user_libs[local_lib] + ".js")
-
-    }
-    for(var vendor_lib in config.vendor){
-
-            include(config.bs  + "/" + config.vendor[vendor_lib] + ".js")
-
+    for(var js in config.js){
+        if(config.js[js].indexOf("/") == 0){
+            include(config.js[js] + ".js");
+        }else{
+            include(config.bs  + "/" + config.js[js] + ".js");
+        }
     }
     $.when(
-        include(config.res + "/ejs.js"),
-        include(config.res + "/view.js"),
-        include(config.bs + "/" + config.pname + "/controllers/index.js"),
-        include(config.res + "/router.js")
+        include("/vendor/huynguyen/jscv/ejs.js"),
+        include("/vendor/huynguyen/jscv/view.js"),
+        include(config.bs + "/controllers/index.js"),
+        include("/vendor/huynguyen/jscv/router.js")
     ).done(function(){
         $("body").prepend(_r(config.index,false,false));
         $(document).delegate("[data-view]","click",function(){
