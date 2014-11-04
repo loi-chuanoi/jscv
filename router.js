@@ -134,3 +134,35 @@ controller.call_api_async = function (api, in_data, in_func) {
     });
 }
 window.controller = controller;
+window.onhashchange=function(e){
+    var url = e.newURL;
+    var hash = url.split("#")[1];
+    if(hash==undefined || hash.length < 1 ){
+    }else{
+        include(config.bs + "/actions/" + hash + ".js");
+        eval("Action."+ _fix(hash) + "()");
+        window.Action = {};
+    }
+}
+window.onload=function(){
+    var e = {};
+    e.newURL=window.location.href;
+    e.oldURL = window.location.href;
+    window.onhashchange(e);
+}
+function _get(key){
+    var hash = window.location.href.split("#")[1];
+    if(hash!=undefined && hash.length > 1 ){
+        if(hash.indexOf(key+"=")>=0){
+            var val = hash.split(key+"=")[1];
+            if(val != "" && val.indexOf("&") >=0){
+                return val.split("&")[0];
+            }else{
+                return val;
+            }
+        }
+    }
+}
+function _fix(key){
+    return key.replace("-","");
+}
