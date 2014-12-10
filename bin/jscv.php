@@ -62,11 +62,20 @@ if (empty($command)) {
             );
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace));            
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views");
+            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index");
+            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index/index");
+            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/cache");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Controllers");
             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs/config.js")) {
-                Save_TL("config.js", $path_vendor . "/" . str_replace("\\", "/", $namespace), $data);
+                Save_TL("config.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/Libs" , $data);
+            }
+            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs/chromefix.js")) {
+                Save_TL("chromefix.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs", $data);
+            }
+             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions/index.js")) {
+                Save_TLN("index-action.js","index.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions", $data);
             }
             if(!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Controllers/index.js")) {
                 Save_TL("index.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Controllers", $data);
@@ -82,8 +91,8 @@ if (empty($command)) {
             	Save_TL("phpdev.bat", $path_vendor . "/vendor/bin", $data);
         	}
         }
+    }
 }
-
 function CreateDir($path)
 {
     if (!file_exists($path)) {
