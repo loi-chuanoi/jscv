@@ -7,7 +7,9 @@
             "email": "huynguyen1059@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "huynguyen/jquery":"*"
+        },
     "cleanup": [
         "README.md",
         "LICENSE",
