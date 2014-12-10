@@ -20,6 +20,9 @@
         ".idea",
         "nbproject"
     ],
+    "bin":[
+        "bin/jscv", "bin/jscv.bat"
+    ],
     "skip_autoload": "true",
     "extra": {
         "public_folder": "public_html"
