@@ -71,6 +71,9 @@ if (empty($command)) {
             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs/config.js")) {
                 Save_TL("config.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/Libs" , $data);
             }
+            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs/config-dev.js")) {
+                Save_TL("config-dev.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/Libs" , $data);
+            }
             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs/chromefix.js")) {
                 Save_TL("chromefix.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs", $data);
             }
