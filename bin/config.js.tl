@@ -7,7 +7,7 @@ var config = {
     "index":"index/index",
     "df_server": window.location.protocol + "//" + window.location.host + "", 
     js:[
-        'libs/chromefix'
+        'Libs/chromefix'
     ],
     css:[]
 };

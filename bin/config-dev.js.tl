@@ -12,7 +12,7 @@ if(host.indexOf('localhost')>=0) {
         "index": "index/index",
         "df_server": window.location.protocol + "//" + window.location.host + "",
         js: [
-            'libs/chromefix'
+            'Libs/chromefix'
         ],
         css: []
     };
