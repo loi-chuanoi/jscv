@@ -63,7 +63,6 @@ if (empty($command)) {
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace));            
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index");
-            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index/index");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/cache");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs");
@@ -76,6 +75,9 @@ if (empty($command)) {
             }
             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs/chromefix.js")) {
                 Save_TL("chromefix.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs", $data);
+            }
+            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index/index.ejs")) {
+                Save_TL("index.ejs", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index/index.ejs", $data);
             }
              if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions/index.js")) {
                 Save_TLN("index-action.js","index.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions", $data);
