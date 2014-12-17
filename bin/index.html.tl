@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Q">
     <meta name="author" content="">
-    <link rel="icon" href="img/icon.png" sizes="48x48">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{[namespace]}/img/icon.png" sizes="48x48">
+    <link rel="shortcut icon" href="{[namespace]}/img/favicon.ico" type="image/x-icon">
     <title></title>
     <link href="{[namespace]}/css/style.css" rel="stylesheet">
 </head>
