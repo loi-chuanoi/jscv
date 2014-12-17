@@ -141,6 +141,9 @@ window.onhashchange=function(e){
     }else{
         include(config.bs + "/actions/" + hash + ".js");
         eval("Action."+ _fix(hash) + "()");
+        window.getCurrentAction = function(){
+            return  _fix(hash);
+        };
         window.Action = {};
     }
 }
