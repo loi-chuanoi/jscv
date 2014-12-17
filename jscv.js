@@ -79,6 +79,19 @@ $(function(){
             include(config.bs  + "/" + config.js[js] + ".js");
         }
     }
+    for(var css in config.css){
+        if(config.js[js].indexOf("/") == 0){
+            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.css[css] + ".css'>");
+            $("head").append(cssLink);
+        }else{
+            var link = config.bs  + "/" + config.css[css];
+            if(link.indexOf("/vendor") == 0){
+                link = config.bs + "/" + config.vendor + link;
+            }
+            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + link + ".css'>");
+            $("head").append(cssLink);
+        }
+    }
     $.when(
         include("/vendor/huynguyen/jscv/ejs.js"),
         include("/vendor/huynguyen/jscv/view.js"),
