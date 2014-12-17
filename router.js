@@ -139,7 +139,7 @@ window.onhashchange=function(e){
     var hash = url.split("#")[1];
     if(hash==undefined || hash.length < 1 ){
     }else{
-        include(config.bs + "/Actions/" + hash + ".js");
+        include(config.bs + "/actions/" + hash + ".js");
         eval("Action."+ _fix(hash) + "()");
         window.Action = {};
     }

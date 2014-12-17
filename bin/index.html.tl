@@ -9,7 +9,6 @@
     <link rel="icon" href="{[namespace]}/img/icon.png" sizes="48x48">
     <link rel="shortcut icon" href="{[namespace]}/img/favicon.ico" type="image/x-icon">
     <title></title>
-    <link href="{[namespace]}/css/style.css" rel="stylesheet">
 </head>
 <body>
 <script src="{[namespace]}/Libs/config.js"></script>
