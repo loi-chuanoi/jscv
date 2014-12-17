@@ -1,1 +1,1 @@
-sudo php -S localhost:81 -t "{[path_public]}" "{[path_public]}/index.php"
+sudo php -S localhost:81 -t "{[path_public]}"
