@@ -12,8 +12,8 @@
     <link href="{[namespace]}/css/style.css" rel="stylesheet">
 </head>
 <body>
-<script src="{[namespace]}/libs/config.js"></script>
-<script src="{[namespace]}/libs/config-dev.js"></script>
+<script src="{[namespace]}/Libs/config.js"></script>
+<script src="{[namespace]}/Libs/config-dev.js"></script>
 <script src="vendor/huynguyen/jquery/jquery.js"></script>
 <script src="vendor/huynguyen/jscv/jscv.js"></script>
 </body>
