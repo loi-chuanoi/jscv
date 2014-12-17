@@ -84,6 +84,9 @@ if (empty($command)) {
             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs/chromefix.js")) {
                 Save_TL("chromefix.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs", $data);
             }
+            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/css/chromefix.css")) {
+                Save_TL("chromefix.css", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/css", $data);
+            }
             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index/index.ejs")) {
                 Save_TL("index.ejs", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index/index.ejs", $data);
             }
