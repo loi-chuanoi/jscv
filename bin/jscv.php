@@ -66,9 +66,17 @@ if (empty($command)) {
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/cache");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs");
+            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/img");
+            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/css");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Controllers");
             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs/config.js")) {
                 Save_TL("config.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/Libs" , $data);
+            }
+            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/img/favicon.ico")) {
+                Save_TL("favicon.ico", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/img" , $data);
+            }
+            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/img/icon.png")) {
+                Save_TL("icon.png", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/img" , $data);
             }
             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs/config-dev.js")) {
                 Save_TL("config-dev.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/Libs" , $data);
