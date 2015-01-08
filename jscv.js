@@ -52,7 +52,9 @@ var jsloop = 0;
 
 function include(file){
     if(file.indexOf("/vendor") == 0){
-        file = config.bs + "/" + config.vendor + file;
+        file = config.bs +  config.vendor + file;
+    }else if(file.indexOf("vendor") == 0){
+        file = config.bs + config.vendor + "/" + file;
     }
     $.ajax({
         async: false,
@@ -73,22 +75,22 @@ $(function(){
         config.bs = config.bs.substr(0,config.bs.length-1);
     }
     for(var js in config.js){
-        if(config.js[js].indexOf("/") == 0){
-            include(config.js[js] + ".js");
-        }else{
+        if(config.js[js].indexOf("/vendor") == 0 || config.js[js].indexOf("vendor")){
             include(config.bs  + "/" + config.js[js] + ".js");
+        }else{
+            include(config.js[js] + ".js");
         }
     }
     for(var css in config.css){
-        if(config.js[js].indexOf("/") == 0){
-            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.css[css] + ".css'>");
-            $("head").append(cssLink);
-        }else{
+        if(config.js[css].indexOf("/vendor") == 0 || config.js[css].indexOf("vendor") == 0){
             var link = config.bs  + "/" + config.css[css];
             if(link.indexOf("/vendor") == 0){
                 link = config.bs + "/" + config.vendor + link;
             }
             var cssLink = $("<link rel='stylesheet' type='text/css' href='" + link + ".css'>");
+            $("head").append(cssLink);
+        }else{
+            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.css[css] + ".css'>");
             $("head").append(cssLink);
         }
     }
