@@ -76,17 +76,17 @@ $(function(){
     }
     for(var js in config.js){
         if(config.js[js].indexOf("/vendor") == 0 || config.js[js].indexOf("vendor")){
-            include(config.bs  + "/" + config.js[js] + ".js");
+            include(config.bs  + "/" + config.js[js] );
         }else{
-            include(config.js[js] + ".js");
+            include(config.js[js]);
         }
     }
     for(var css in config.css){
         if(config.css[css].indexOf("/vendor") == 0 || config.css[css].indexOf("vendor") == 0){
-            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.bs + "/" + config.vendor + "/" + config.css[css] + ".css'>");
+            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.bs + "/" + config.vendor + "/" + config.css[css] + "'>");
             $("head").append(cssLink);
         }else{
-            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.bs + "/" + config.css[css] + ".css'>");
+            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.bs + "/" + config.css[css] + "''>");
             $("head").append(cssLink);
         }
     }
