@@ -82,15 +82,11 @@ $(function(){
         }
     }
     for(var css in config.css){
-        if(config.js[css].indexOf("/vendor") == 0 || config.js[css].indexOf("vendor") == 0){
-            var link = config.bs  + "/" + config.css[css];
-            if(link.indexOf("/vendor") == 0){
-                link = config.bs + "/" + config.vendor + link;
-            }
-            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + link + ".css'>");
+        if(config.css[css].indexOf("/vendor") == 0 || config.css[css].indexOf("vendor") == 0){
+            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.bs + "/" + config.vendor + "/" + config.css[css] + ".css'>");
             $("head").append(cssLink);
         }else{
-            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.css[css] + ".css'>");
+            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.bs + "/" + config.css[css] + ".css'>");
             $("head").append(cssLink);
         }
     }
