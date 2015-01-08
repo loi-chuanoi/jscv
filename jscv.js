@@ -52,9 +52,9 @@ var jsloop = 0;
 
 function include(file){
     if(file.indexOf("/vendor") == 0){
-        file = config.bs +  config.vendor + file;
+        file = config.bs + "/" + config.vendor + file;
     }else if(file.indexOf("vendor") == 0){
-        file = config.bs + config.vendor + "/" + file;
+        file = config.bs + "/" + config.vendor + "/" + file;
     }
     $.ajax({
         async: false,
