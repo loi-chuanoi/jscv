@@ -7,26 +7,21 @@
             "email": "huynguyen1059@gmail.com"
         }
     ],
-    "require": {
-        "huynguyen/jquery":"*"
-        },
-    "cleanup": [
-        "README.md",
-        "LICENSE",
-        "CHANGELOG.md",
-        "phpunit.xml.dist",
-        "composer.json",
-        "bower.json",
-        ".gitignore",
-        ".htaccess",
-        ".idea",
-        "nbproject"
-    ],
     "bin":[
         "bin/jscv", "bin/jscv.bat"
     ],
-    "skip_autoload": "true",
     "extra": {
-        "public_folder": "public_html"
+        "ignore": [
+            "README.md",
+            "LICENSE",
+            "CHANGELOG.md",
+            "phpunit.xml.dist",
+            "composer.json",
+            "bower.json",
+            ".gitignore",
+            ".htaccess",
+            ".idea",
+            "nbproject"
+        ]
     }
 }
