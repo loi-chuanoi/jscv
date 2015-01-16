@@ -139,11 +139,22 @@ window.onhashchange=function(e){
     var hash = url.split("#")[1];
     if(hash==undefined || hash.length < 1 ){
     }else{
-        include(config.bs + "/actions/" + hash + ".js");
-        eval("Action."+ _fix(hash) + "()");
-        window.getCurrentAction = function(){
-            return  _fix(hash);
-        };
+        if(hash.indexOf("-")!=0){
+          var action = hash.split("-")[1];
+          hash =  hash.split("-")[0];
+            include(config.bs + "/actions/" + hash + ".js");
+            eval("Action."+ hash + "." + action + "()");
+            window.getCurrentAction = function(){
+                return hash;
+            };
+        }else
+        {
+            include(config.bs + "/actions/" + hash + ".js");
+            eval("Action."+ hash + "()");
+            window.getCurrentAction = function(){
+                return hash;
+            };
+        }
         window.Action = {};
     }
 }
