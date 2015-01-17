@@ -6,10 +6,10 @@ var host = window.location.href;
         host = host.split("/index")[0];
     }
     var config = {
-        "view": "src/Views",
+        "view": "{[namespace]}/Views",
         "cache": false,
         "theme": "",
-        "bs": host + "/src/",
+        "bs": host + "/{[namespace]}/",
         "vendor": "..",
         "index": "index/index",
         "df_server": host,
@@ -17,6 +17,6 @@ var host = window.location.href;
             'Libs/chromefix',
         ],
         css: [
-            "src/css/style"
+            "{[namespace]}/css/style"
         ]
 }
