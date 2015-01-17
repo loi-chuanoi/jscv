@@ -82,7 +82,7 @@ if (empty($command)) {
                 Save_TL("config-dev.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/Libs" , $data);
             }
             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index/index.ejs")) {
-                Save_TL("index.ejs", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index/index.ejs", $data);
+                Save_TL("index.ejs", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index", $data);
             }
              if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions/index.js")) {
                 Save_TLN("index-action.js","index.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions", $data);

@@ -14,7 +14,7 @@ var host = window.location.href;
         "index": "index/index",
         "df_server": host,
         js: [
-            'Libs/chromefix',
+        
         ],
         css: [
             "{[namespace]}/css/style"
