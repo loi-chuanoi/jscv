@@ -17,6 +17,6 @@ var host = window.location.href;
         
         ],
         css: [
-            "{[namespace]}/css/style"
+            "css/style"
         ]
 }

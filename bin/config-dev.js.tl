@@ -17,7 +17,7 @@ if (host.indexOf('localhost') >= 0) {
         js: [
         ],
         css: [
-            "{[namespace]}/css/style"
+            "css/style"
         ]
     };
 }
