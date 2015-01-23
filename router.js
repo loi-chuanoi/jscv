@@ -133,6 +133,13 @@ controller.call_api_async = function (api, in_data, in_func) {
         }
     });
 }
+controller.redirect =function(target){
+    if(typeof (target)!="undefined"){
+        window.location.href ="#" + target;
+    }else{
+        window.location.href ="#";
+    }
+}
 window.controller = controller;
 window.onhashchange=function(e){
     var url = e.newURL;
