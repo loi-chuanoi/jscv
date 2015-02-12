@@ -26,7 +26,7 @@ controller.request = function (api, data, not_post_data) {
         var a = v[1];
         if (eval("window." + m + " == undefined")) {
             $.when(
-                include(config.bs + "/Controllers/" + m + ".js")
+                include(config.bs + "/controllers/" + m + ".js")
             ).done(function () {
                     r = eval("m = new " + m + "();m." + a + "(" + JSON.stringify(data) + ");");
                 });
@@ -58,7 +58,7 @@ controller.request = function (api, data, not_post_data) {
         a = v[1];
         if (eval("window." + m + " == undefined")) {
             $.when(
-                include(config.bs + "/Controllers/" + m + ".js")
+                include(config.bs + "/controllers/" + m + ".js")
             ).done(function () {
                     r = eval("m = new " + m + "();m." + a + "(" + JSON.stringify(data) + ");");
                 });
@@ -72,7 +72,7 @@ controller.request = function (api, data, not_post_data) {
         a = v[1];
         if (eval("window." + m + " == undefined")) {
             $.when(
-                include(config.bs + "/Controllers/" + m + ".js")
+                include(config.bs + "/controllers/" + m + ".js")
             ).done(function () {
                     r = eval("m = new " + m + "();m." + a + "(" + JSON.stringify(data) + ");");
                 });
@@ -133,20 +133,18 @@ controller.call_api_async = function (api, in_data, in_func) {
         }
     });
 }
-controller.redirect =function(target){
-    if(typeof (target)!="undefined"){
-        window.location.href ="#" + target;
-    }else{
-        window.location.href ="#";
-    }
-}
 window.controller = controller;
 window.onhashchange=function(e){
     var url = e.newURL;
+    if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
+         url =  location.href;
+    }
+
     var hash = url.split("#")[1];
     if(hash==undefined || hash.length < 1 ){
-    }else{
-        if(hash.indexOf("-")!=0){
+       hash = "index-index";
+    }
+    if(hash.indexOf("-")!=0){
           var action = hash.split("-")[1];
           hash =  hash.split("-")[0];
             include(config.bs + "/actions/" + hash + ".js");
@@ -162,15 +160,15 @@ window.onhashchange=function(e){
                 return hash;
             };
         }
-        window.Action = {};
-    }
+    window.Action = {};
+    
 }
-window.onload=function(){
+$(document).ready(function(){
     var e = {};
-    e.newURL=window.location.href;
-    e.oldURL = window.location.href;
-    window.onhashchange(e);
-}
+    e.newURL= window.location.href;
+    e.oldURL = window.location.href;    
+    window.onhashchange(e);  
+});
 function _get(key){
     var hash = window.location.href.split("#")[1];
     if(hash!=undefined && hash.length > 1 ){
@@ -186,4 +184,13 @@ function _get(key){
 }
 function _fix(key){
     return key.replace("-","");
+}
+// render onclient with check is loaded by data-mark node
+
+window.r = function(node,template){    
+    var mark = $("[data-mark='" + template + "']");
+    template = template.replace(".","/");
+    if(mark.length<=0){
+        node.append(_r(template));
+    }
 }

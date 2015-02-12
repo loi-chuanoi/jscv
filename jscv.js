@@ -93,7 +93,7 @@ $(function(){
     $.when(
         include("/vendor/huynguyen/jscv/ejs.js"),
         include("/vendor/huynguyen/jscv/view.js"),
-        include(config.bs + "/Controllers/index.js"),
+        include(config.bs + "/controllers/index.js"),
         include("/vendor/huynguyen/jscv/router.js")
     ).done(function(){
         $("body").prepend(_r(config.index,false,false));
