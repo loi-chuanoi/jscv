@@ -12,6 +12,17 @@ window.Action = Action;
 function _r(template_name,load_data,not_post_data,in_data){
    return render(template_name,load_data,not_post_data,in_data);
 }
+// getfile
+function _g(filename,func){
+    $.ajax({
+        url:filename,
+        cache:true
+    }).done(
+        function(data){
+            func(data);
+        }
+    );
+}
 // render từ ejs ra giao diện
 function render(template_name,load_data,not_post_data,in_data){
     var out_data = {"config":config,"in_data":in_data}
@@ -93,7 +104,7 @@ $(function(){
     $.when(
         include("/vendor/huynguyen/jscv/ejs.js"),
         include("/vendor/huynguyen/jscv/view.js"),
-        include(config.bs + "/controllers/index.js"),
+        include(config.bs + "/Controllers/index.js"),
         include("/vendor/huynguyen/jscv/router.js")
     ).done(function(){
         $("body").prepend(_r(config.index,false,false));
