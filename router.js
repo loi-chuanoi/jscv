@@ -137,6 +137,9 @@ controller.call_api_async = function (api, in_data, in_func) {
 window.controller = controller;
 window.onhashchange=function(e){
     var url = e.newURL;
+    if(typeof(url)=="undefined" || url==""){
+        url = window.location.href;
+    }
     var hash = url.split("#")[1];
     if(hash==undefined || hash.length < 1 ){
     }else{
