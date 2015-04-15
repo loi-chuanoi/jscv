@@ -142,8 +142,9 @@ window.onhashchange=function(e){
     }
     var hash = url.split("#")[1];
     if(hash==undefined || hash.length < 1 ){
-    }else{
-        if(hash.indexOf("-")!=0){
+        hash = "index-index"
+    }
+    if(hash.indexOf("-")!=0){
           var action = hash.split("-")[1];
           hash =  hash.split("-")[0];
             include(config.bs + "/actions/" + hash + ".js");
@@ -160,7 +161,6 @@ window.onhashchange=function(e){
             };
         }
         window.Action = {};
-    }
 }
 window.onload=function(){
     var e = {};
