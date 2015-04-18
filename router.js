@@ -2,7 +2,6 @@ var controller = {};
 controller.submit = function (target) {
     if (target) {
         var api = $(target).attr("data-submit");
-
         var submit_data = {};
         $(target).find("input")
             .each(function (e, input) {
