@@ -14,8 +14,12 @@ function _r(template_name,load_data,not_post_data,in_data){
 }
 // getfile
 function _g(filename,func){
+    var f_link = config.view +  "/";
+    if(config.theme!=""){
+        f_link = config.view +  "/" + config.theme + ;
+    }    
     $.ajax({
-        url:filename,
+        url:f_link + filename,
         cache:true
     }).done(
         function(data){
