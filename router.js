@@ -1,4 +1,7 @@
 var controller = {};
+if(typeof(config)=="undefined"){
+    alert("Vui lòng cấu hình ở file config.js");
+}
 controller.submit = function (target) {
     if (target) {
         var api = $(target).attr("data-submit");
@@ -162,10 +165,12 @@ window.onhashchange=function(e){
         window.Action = {};
 }
 window.onload=function(){
-    var e = {};
-    e.newURL=window.location.href;
-    e.oldURL = window.location.href;
-    window.onhashchange(e);
+    if(!config.dev){
+        var e = {};
+        e.newURL=window.location.href;
+        e.oldURL = window.location.href;
+        window.onhashchange(e);        
+    }
 }
 function _get(key){
     var hash = window.location.href.split("#")[1];

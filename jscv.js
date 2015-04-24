@@ -16,7 +16,7 @@ function _r(template_name,load_data,not_post_data,in_data){
 function _g(filename,func){
     var f_link = config.view +  "/";
     if(config.theme!=""){
-        f_link = config.view +  "/" + config.theme + ;
+        f_link = config.view +  "/" + config.theme;
     }    
     $.ajax({
         url:f_link + filename,
@@ -111,6 +111,7 @@ $(function(){
         include(config.bs + "/controllers/index.js"),
         include("/vendor/huynguyen/jscv/router.js")
     ).done(function(){
+        if(!config.dev){
         $("body").prepend(_r(config.index,false,false));
         $(document).delegate("[data-view]","click",function(){
              config.currentview = $(this).attr("data-view");
@@ -123,6 +124,8 @@ $(function(){
                        $(place).html(_r(config.currentview));
                   }
               }
-        });
-    });
+            });
+       
+       }
+    });   
 });
