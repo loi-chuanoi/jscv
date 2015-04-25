@@ -57,4 +57,5 @@ exec("git add --all *");
 echo (exec("git commit --no-edit -m \"Create new build by BuildServer($newbuild)\"") . "\n");
 exec("git tag $newbuild build");
 exec("git checkout -f master");
-echo "Succes !\n";
+exec("git branch -D build");
+echo "Success !\n";
