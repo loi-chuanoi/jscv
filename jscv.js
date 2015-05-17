@@ -84,6 +84,12 @@ function include(file){
        }
     });
 }
+
+/* add in function */
+function redirect(url)
+{
+      window.location.assign(url);
+}
 /*          */
 $(function(){
     if(config.bs.substr(config.bs.length-1,1)== "/"){
