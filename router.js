@@ -149,25 +149,25 @@ window.onhashchange=function(e){
     }
     var hash = url.split("#")[1];
     if(hash==undefined || hash.length < 1 ){
-        hash = "index-index"
+        hash = "index/index"
     }
-    if(hash.indexOf("-")!=0){
-          var action = hash.split("-")[1];
-          hash =  hash.split("-")[0];
-            include(config.bs + "/actions/" + hash + ".js");
-            eval("Action."+ hash + "." + action + "()");
-            window.getCurrentAction = function(){
-                return hash;
-            };
-        }else
-        {
+    if(hash.indexOf("/")!=0){
+        var action = hash.split("/")[1];
+        hash =  hash.split("/")[0];
+        include(config.bs + "/actions/" + hash + ".js");
+        eval("Action."+ hash + "." + action + "()");
+        window.getCurrentAction = function(){
+            return hash;
+        };
+    }
+    else{
             include(config.bs + "/actions/" + hash + ".js");
             eval("Action."+ hash + "()");
             window.getCurrentAction = function(){
                 return hash;
             };
-        }
-        window.Action = {};
+    }
+    window.Action = {};
 }
 window.onload=function(){
     if(!config.dev){
