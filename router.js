@@ -1,4 +1,8 @@
 var controller = {};
+var Rourter =function(){};
+Rourter.redirect = function(url){
+    location.href = config.df_server + url;
+};
 if(typeof(config)=="undefined"){
     alert("Vui lòng cấu hình ở file config.js");
 }
