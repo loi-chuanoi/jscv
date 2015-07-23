@@ -12,6 +12,10 @@ window.Action = Action;
 function _r(template_name,load_data,not_post_data,in_data){
    return render(template_name,load_data,not_post_data,in_data);
 }
+// getjson
+function _j(url,data,callback){
+    $.getJSON(config.df_server + url,data,callback);
+}
 // getfile
 function _g(filename,func){
     var f_link = config.view +  "/";
