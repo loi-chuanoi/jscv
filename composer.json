@@ -8,20 +8,6 @@
         }
     ],
     "bin":[
-        "bin/jscv", "bin/jscv.bat"
-    ],
-    "extra": {
-        "ignore": [
-            "README.md",
-            "LICENSE",
-            "CHANGELOG.md",
-            "phpunit.xml.dist",
-            "composer.json",
-            "bower.json",
-            ".gitignore",
-            ".htaccess",
-            ".idea",
-            "nbproject"
-        ]
-    }
+        "bin/jscv"
+    ]
 }

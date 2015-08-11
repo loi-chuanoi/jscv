@@ -1,5 +1,5 @@
 <?php
-include("config.php");
+include("build/config.php");
 echo "Buildding ...... dont touch your project, anyway! ??\n";
 echo ("We're working with : " .exec("git --version") . "\n");
 echo (exec("git checkout master") . "\n");
