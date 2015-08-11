@@ -19,11 +19,17 @@ function _j(url,data,callback){
 // getfile
 function _g(filename,func){
     var f_link = config.view +  "/";
-    if(config.theme!=""){
-        f_link = config.view +  "/" + config.theme;
-    }    
+    if(filename[0] != "/"){
+        if(config.theme!=""){
+            f_link = config.view +  "/" + config.theme;
+            f_link = f_link + filename
+        }
+    }else{
+        filename = filename.substr(1,filename.length-1);
+        f_link = config.df_server + filename;
+    }
     $.ajax({
-        url:f_link + filename,
+        url:f_link,
         cache:true
     }).done(
         function(data){
@@ -123,7 +129,10 @@ $(function(){
     ).done(function(){
         if(!config.dev){
         $("body").prepend(_r(config.index,false,false));
-        $(document).delegate("[data-view]","click",function(){
+        $(document).delegate("[data-c]","click",function(){//hook data-c node
+            controller.request($(this).attr("data-c"),{},true);
+        });
+        $(document).delegate("[data-view]","click",function(){ // hook data-view
              config.currentview = $(this).attr("data-view");
              var place = $(this).attr("data-place");
               if(place.length != 0){
@@ -135,7 +144,6 @@ $(function(){
                   }
               }
             });
-       
        }
     });   
 });

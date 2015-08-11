@@ -35,10 +35,10 @@ controller.request = function (api, data, not_post_data) {
             $.when(
                 include(config.bs + "/controllers/" + m + ".js")
             ).done(function () {
-                    r = eval("m = new " + m + "();m." + a + "(" + JSON.stringify(data) + ");");
-                });
+                    r = eval("var m = new " + m + "();m." + a + "(" + JSON.stringify(data) + ");");
+            });
         } else {
-            r = eval("m = new " + m + "();m." + a + "(" + JSON.stringify(data) + ");");
+                    r = eval("var m = new " + m + "();m." + a + "(" + JSON.stringify(data) + ");");
         }
         return r;
     }
