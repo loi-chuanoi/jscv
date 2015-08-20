@@ -16,6 +16,8 @@ function _r(template_name,load_data,not_post_data,in_data){
 function _j(url,data,callback){
     $.post(config.df_server + url,data,callback,"json");
 }
+function _p(url,data,callback){
+    $.post(config.df_server + url,data,callback);}
 // getfile
 function _g(filename,func){
     var f_link = config.view +  "/";
