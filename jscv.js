@@ -8,7 +8,9 @@
 var Action = {};
 window.Action = Action;
 // end action
-
+if(config.df_server==""){
+    config.df_server = config.bs;
+}
 function _r(template_name,load_data,not_post_data,in_data){
    return render(template_name,load_data,not_post_data,in_data);
 }
@@ -24,11 +26,11 @@ function _g(filename,func){
     if(filename[0] != "/"){
         if(config.theme!=""){
             f_link = config.view +  "/" + config.theme;
-            f_link = f_link + filename
+            f_link = f_link + "/" + filename
         }
     }else{
         filename = filename.substr(1,filename.length-1);
-        f_link = config.df_server + filename;
+        f_link = config.df_server + "/" + filename;
     }
     $.ajax({
         url:f_link,
