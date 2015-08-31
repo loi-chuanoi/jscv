@@ -10,16 +10,9 @@ if(empty($pars[0])){
 $cur_path = realpath("");
 $cur_path = str_replace("\\", "/", $cur_path);
 $path_root = str_replace("huynguyen/jscv", "", $cur_path) . "/";
-$namespace = null;
+$namespace = "website";
 $path = realpath(".");
-if (file_exists($path_root . "composer.json")) {
-    // load composer
-    $js = json_decode(file_get_contents($path_root . "composer.json"));
-    if (!empty($js->name)) {
-        $namespace = $js->name;
-    }
 
-}
 
 if (empty($command)) {
     echo("Simple javascript mvc framework - create by Huy Nguyen<huynguyen159@outlook.com>\n");
@@ -61,16 +54,16 @@ if (empty($command)) {
                 "namespace" => $namespace
             );
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace));            
-            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views");
-            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index");
+            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/views");
+            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/views/index");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/cache");
-            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs");
+            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/libs");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/img");
             CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/css");
-            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Controllers");
-            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs/config.js")) {
-                Save_TL("config.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/Libs" , $data);
+            CreateDir($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/controllers");
+            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/libs/config.js")) {
+                Save_TL("config.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/libs" , $data);
             }
             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/img/favicon.ico")) {
                 Save_TL("favicon.ico", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/img" , $data);
@@ -78,17 +71,17 @@ if (empty($command)) {
             if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/img/icon.png")) {
                 Save_TL("icon.png", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/img" , $data);
             }
-            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Libs/config-dev.js")) {
-                Save_TL("config-dev.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/Libs" , $data);
+            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/libs/config-dev.js")) {
+                Save_TL("config-dev.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) ."/libs" , $data);
             }
-            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index/index.ejs")) {
-                Save_TL("index.ejs", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Views/index", $data);
+            if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/views/index/index.ejs")) {
+                Save_TL("index.ejs", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/views/index", $data);
             }
              if (!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions/index.js")) {
                 Save_TLN("index-action.js","index.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/actions", $data);
             }
-            if(!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Controllers/index.js")) {
-                Save_TL("index.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/Controllers", $data);
+            if(!file_exists($path_vendor . "/" . str_replace("\\", "/", $namespace) . "/controllers/index.js")) {
+                Save_TL("index.js", $path_vendor . "/" . str_replace("\\", "/", $namespace) . "/controllers", $data);
             }
             $data = array(
                 "path_public" => $path_public
