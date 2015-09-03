@@ -155,7 +155,7 @@ window.onhashchange=function(e){
     if(hash==undefined || hash.length < 1 ){
         hash = "index/index"
     }
-    if(hash.indexOf("/")!=0){
+    if(hash.indexOf("/")>0){
         var action = hash.split("/")[1];
         hash =  hash.split("/")[0];
         include(config.bs + "/actions/" + hash + ".js");
