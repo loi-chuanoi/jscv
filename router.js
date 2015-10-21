@@ -6,22 +6,25 @@ Rourter.redirect = function(url){
 if(typeof(config)=="undefined"){
     alert("Vui lòng cấu hình ở file config.js");
 }
+controller.get_submit_data = function (target){
+    var submit_data = {};
+    $(target).find("input")
+        .each(function (e, input) {
+            var input_name = $(input).attr("name");
+            if (!input_name) {
+                input_name = $(input).attr("id");
+            }
+            if (input_name) {
+                submit_data[input_name] = $(input).val();
+            }
+        });
+    submit_data.target = target;
+    return submit_data;
+}
 controller.submit = function (target) {
     if (target) {
         var api = $(target).attr("data-submit");
-        var submit_data = {};
-        $(target).find("input")
-            .each(function (e, input) {
-                var input_name = $(input).attr("name");
-                if (!input_name) {
-                    input_name = $(input).attr("id");
-                }
-                if (input_name) {
-                    submit_data[input_name] = $(input).val();
-                }
-            });
-        submit_data.target = target;
-        this.request(api, submit_data);
+        this.request(api, controller.get_submit_data(submit_data));
     }
     return false;
 }
