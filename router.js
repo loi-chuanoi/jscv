@@ -24,7 +24,7 @@ controller.get_submit_data = function (target){
 controller.submit = function (target) {
     if (target) {
         var api = $(target).attr("data-submit");
-        this.request(api, controller.get_submit_data(submit_data));
+        this.request(api, controller.get_submit_data(target));
     }
     return false;
 }
