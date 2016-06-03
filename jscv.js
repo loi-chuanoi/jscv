@@ -115,7 +115,8 @@ function redirect(url)
       window.location.assign(url);
 }
 /*          */
-$(function(){
+var JSCV = {};
+JSCV.prototype.init = function () {
     if(config.bs.substr(config.bs.length-1,1)== "/"){
         config.bs = config.bs.substr(0,config.bs.length-1);
     }
@@ -142,22 +143,22 @@ $(function(){
         include("/vendor/huynguyen/jscv/router.js")
     ).done(function(){
         if(!config.dev){
-        $("body").prepend(_r(config.index,false,false));
-        $(document).delegate("[data-c]","click",function(){//hook data-c node
-            controller.request($(this).attr("data-c"),{},true);
-        });
-        $(document).delegate("[data-view]","click",function(){ // hook data-view
-             config.currentview = $(this).attr("data-view");
-             var place = $(this).attr("data-place");
-              if(place.length != 0){
-                  config.currentplace = place;
-                  if($(this).attr("data-call-modal") == ""){
-                      $(place).html(_r(config.currentview,true,true));
-                  }else{
-                       $(place).html(_r(config.currentview));
-                  }
-              }
+            $("body").prepend(_r(config.index,false,false));
+            $(document).delegate("[data-c]","click",function(){//hook data-c node
+                controller.request($(this).attr("data-c"),{},true);
             });
-       }
-    });   
-});
+            $(document).delegate("[data-view]","click",function(){ // hook data-view
+                config.currentview = $(this).attr("data-view");
+                var place = $(this).attr("data-place");
+                if(place.length != 0){
+                    config.currentplace = place;
+                    if($(this).attr("data-call-modal") == ""){
+                        $(place).html(_r(config.currentview,true,true));
+                    }else{
+                        $(place).html(_r(config.currentview));
+                    }
+                }
+            });
+        }
+    });
+}
