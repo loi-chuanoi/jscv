@@ -115,50 +115,52 @@ function redirect(url)
       window.location.assign(url);
 }
 /*          */
-var JSCV = {};
-JSCV.prototype.init = function () {
-    if(config.bs.substr(config.bs.length-1,1)== "/"){
-        config.bs = config.bs.substr(0,config.bs.length-1);
-    }
-    for(var js in config.js){
-        if(config.js[js].indexOf("/vendor") == 0 || config.js[js].indexOf("vendor")){
-            include(config.bs  + "/" + config.js[js] );
-        }else{
-            include(config.js[js]);
+var JSCV = {
+    init : function () {
+        if(config.bs.substr(config.bs.length-1,1)== "/"){
+            config.bs = config.bs.substr(0,config.bs.length-1);
         }
-    }
-    for(var css in config.css){
-        if(config.css[css].indexOf("/vendor") == 0 || config.css[css].indexOf("vendor") == 0){
-            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.bs + "/" + config.vendor + "/" + config.css[css] + "'>");
-            $("head").append(cssLink);
-        }else{
-            var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.bs + "/" + config.css[css] + "''>");
-            $("head").append(cssLink);
+        for(var js in config.js){
+            if(config.js[js].indexOf("/vendor") == 0 || config.js[js].indexOf("vendor")){
+                include(config.bs  + "/" + config.js[js] );
+            }else{
+                include(config.js[js]);
+            }
         }
-    }
-    $.when(
-        include("/vendor/huynguyen/jscv/ejs.js"),
-        include("/vendor/huynguyen/jscv/view.js"),
-        include(config.bs + "/controllers/index.js"),
-        include("/vendor/huynguyen/jscv/router.js")
-    ).done(function(){
-        if(!config.dev){
-            $("body").prepend(_r(config.index,false,false));
-            $(document).delegate("[data-c]","click",function(){//hook data-c node
-                controller.request($(this).attr("data-c"),{},true);
-            });
-            $(document).delegate("[data-view]","click",function(){ // hook data-view
-                config.currentview = $(this).attr("data-view");
-                var place = $(this).attr("data-place");
-                if(place.length != 0){
-                    config.currentplace = place;
-                    if($(this).attr("data-call-modal") == ""){
-                        $(place).html(_r(config.currentview,true,true));
-                    }else{
-                        $(place).html(_r(config.currentview));
+        for(var css in config.css){
+            if(config.css[css].indexOf("/vendor") == 0 || config.css[css].indexOf("vendor") == 0){
+                var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.bs + "/" + config.vendor + "/" + config.css[css] + "'>");
+                $("head").append(cssLink);
+            }else{
+                var cssLink = $("<link rel='stylesheet' type='text/css' href='" + config.bs + "/" + config.css[css] + "''>");
+                $("head").append(cssLink);
+            }
+        }
+        $.when(
+            include("/vendor/huynguyen/jscv/ejs.js"),
+            include("/vendor/huynguyen/jscv/view.js"),
+            include(config.bs + "/controllers/index.js"),
+            include("/vendor/huynguyen/jscv/router.js")
+        ).done(function(){
+            if(!config.dev){
+                $("body").prepend(_r(config.index,false,false));
+                $(document).delegate("[data-c]","click",function(){//hook data-c node
+                    controller.request($(this).attr("data-c"),{},true);
+                });
+                $(document).delegate("[data-view]","click",function(){ // hook data-view
+                    config.currentview = $(this).attr("data-view");
+                    var place = $(this).attr("data-place");
+                    if(place.length != 0){
+                        config.currentplace = place;
+                        if($(this).attr("data-call-modal") == ""){
+                            $(place).html(_r(config.currentview,true,true));
+                        }else{
+                            $(place).html(_r(config.currentview));
+                        }
                     }
-                }
-            });
-        }
-    });
-}
+                });
+            }
+        });
+    }
+};
+
