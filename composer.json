@@ -7,9 +7,6 @@
             "email": "huynguyen1059@gmail.com"
         }
     ],
-    "require":{
-        "huynguyen/jquery":"~1"
-        },
     "bin":[
         "bin/jscv"
     ]
